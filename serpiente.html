@@ -16,6 +16,7 @@
   <script src="js/tablero.js"></script>
   <script src="js/punto.js"></script>
   <script src="js/linea.js"></script>
+  <script src="js/circulo.js"></script>
 
   <script type="text/javascript">
   // Lugar donde se hacen los test.
@@ -32,6 +33,10 @@
 
     linea.obtenerPI().establecerX(200);
     linea.dibujar();
+
+    var punto3 = new Punto(cvs,100,100);
+    var circulo = new Circulo(cvs,2,punto3);
+    circulo.dibujar();
 
   </script>
 
