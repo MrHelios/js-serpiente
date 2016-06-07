@@ -14,11 +14,25 @@
   </canvas>
 
   <script src="js/tablero.js"></script>
+  <script src="js/punto.js"></script>
 
   <script type="text/javascript">
+  // Lugar donde se hacen los test.
     var cvs="canvas";
-    tablero = new Tablero(cvs);
+
+
+    var tablero = new Tablero(cvs);
     tablero.limpiar();
+
+    var punto = new Punto(cvs,3,15);
+    console.log(punto.obtenerX());
+    console.log(punto.obtenerY());
+    console.log(punto.obtenerID());
+
+    var punto2 = punto.clone();
+    console.log(punto2.obtenerX());
+    console.log(punto2.obtenerY());
+    console.log(punto2.obtenerID());
   </script>
 
 </body>

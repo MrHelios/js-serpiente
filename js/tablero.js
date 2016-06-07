@@ -1,5 +1,6 @@
 function Tablero(canvas) {
   this.lienzo = document.getElementById(canvas).getContext("2d");
+  this.ID = canvas;
   this.long = document.getElementById(canvas).width;
   this.altura = document.getElementById(canvas).height;
 
@@ -20,4 +21,5 @@ function Tablero(canvas) {
   // Consultas.
   this.obtenerLong = function() { return this.long;}
   this.obtenerAltura = function() { return this.altura;}
+  this.obtenerID = function() { return this.ID;}
 }
