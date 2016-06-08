@@ -16,19 +16,20 @@
   <script src="js/tablero.js"></script>
   <script src="js/punto.js"></script>
   <script src="js/linea.js"></script>
+  <script src="js/linea_mov.js"></script>
   <script src="js/circulo.js"></script>
   <script src="js/coleccion.js"></script>
+  <script src="js/oyente.js"></script>
+  <script src="js/actualizador.js"></script>
 
   <script type="text/javascript">
   // Lugar donde se hacen los test.
     var cvs="canvas";
 
     var tablero = new Tablero(cvs);
-    tablero.limpiar();
-
     var punto = new Punto(cvs,50,200);
     var punto2 = new Punto(cvs,50,205);
-    var linea = new Linea(cvs,punto,punto2);
+    var linea = new Linea_Mov(cvs,punto,punto2);
 
     var punto3 = new Punto(cvs,100,100);
     var circulo = new Circulo(cvs,2,punto3);
@@ -36,9 +37,11 @@
 
     var serpiente = new Coleccion(10);
     serpiente.insertar(linea);
-    for(i=0; i<serpiente.obtenerCant();i++) {
-      serpiente.obtenerPos(i).dibujar();
-    }
+
+    o = new Oyente();
+    o.escucharTeclado();
+
+    actualizacion();
 
   </script>
 

@@ -10,13 +10,7 @@ function Tablero(canvas) {
     this.lienzo.fillStyle = "white";
     this.lienzo.fillRect(0,0,this.long,this.altura);
     this.lienzo.stroke();
-  }
-  this.escucharTeclado = function() {
-    window.addEventListener("keydown",this.apretarTecla(),false);
-  }
-  this.apretarTecla = function(event) {
-    // Evento para detectar tecla.
-  }
+  }  
 
   // Consultas.
   this.obtenerLong = function() { return this.long;}
