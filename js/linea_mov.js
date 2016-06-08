@@ -3,6 +3,7 @@ function Linea_Mov(canvas,pi,pf) {
   Linea.call(this,canvas,pi,pf);
   this.velocidadX = 0;
   this.velocidadY = -5;
+  this.giro = false;
 
   this.establecerVX = function(v) {
     this.velocidadX = v;
