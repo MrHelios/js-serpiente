@@ -17,6 +17,7 @@
   <script src="js/punto.js"></script>
   <script src="js/linea.js"></script>
   <script src="js/circulo.js"></script>
+  <script src="js/coleccion.js"></script>
 
   <script type="text/javascript">
   // Lugar donde se hacen los test.
@@ -25,18 +26,19 @@
     var tablero = new Tablero(cvs);
     tablero.limpiar();
 
-    var punto = new Punto(cvs,3,15);
-    var punto2 = new Punto(cvs,50,50);
+    var punto = new Punto(cvs,50,200);
+    var punto2 = new Punto(cvs,50,205);
     var linea = new Linea(cvs,punto,punto2);
-    var linea2 = linea.clone()
-    linea2.dibujar();
-
-    linea.obtenerPI().establecerX(200);
-    linea.dibujar();
 
     var punto3 = new Punto(cvs,100,100);
     var circulo = new Circulo(cvs,2,punto3);
     circulo.dibujar();
+
+    var serpiente = new Coleccion(10);
+    serpiente.insertar(linea);
+    for(i=0; i<serpiente.obtenerCant();i++) {
+      serpiente.obtenerPos(i).dibujar();
+    }
 
   </script>
 
