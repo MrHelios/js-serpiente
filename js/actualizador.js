@@ -4,6 +4,7 @@ actualizacion = function() {
   // Dibujo la serpiente.
   for(var i=0; i<serpiente.obtenerCant();i++) {
     if(i==0) {
+
         if(!serpiente.obtenerPos(0).giro) serpiente.obtenerPos(i).movimiento();
 
         // Verificamos la nueva posicion.
@@ -27,6 +28,7 @@ actualizacion = function() {
         }
       }
     else {
+
         var puntoi = serpiente.obtenerPos(i-1).obtenerPF().clone();
         var puntof = serpiente.obtenerPos(i).obtenerPI().clone();
 
@@ -35,12 +37,22 @@ actualizacion = function() {
     }
     serpiente.obtenerPos(i).dibujar();
   }
+
+  // Verficamos que la cabeza de la serpiente no coma su propio cuerpo.
+  var puntoi = serpiente.obtenerPos(0).obtenerPI();
+  var j=1;
+  while(j<serpiente.obtenerCant() && victoria) {
+    if(serpiente.obtenerPos(j).obtenerPF().equals(puntoi)) victoria=false;
+    j++;
+  }
+
+
   serpiente.obtenerPos(0).giro = false;
 
   // Dibujo de manzanas.
   for(var i=0; i<manzanas.obtenerCant(); i++) {
     manzanas.obtenerPos(i).dibujar();
-  }  
+  }
 
   // Mientras la serpiente este viva el juego seguira.
   if(victoria) setTimeout(actualizacion,50);

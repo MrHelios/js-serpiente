@@ -1,6 +1,3 @@
-/*
-No implemente metodos de velocidad.
-*/
 
 function Punto(canvas,x,y) {
   // Constructor.
@@ -20,6 +17,9 @@ function Punto(canvas,x,y) {
   this.obtenerX = function() { return this.x;}
   this.obtenerY = function() { return this.y;}
   this.clone = function() { return new Punto(this.ID,this.x,this.y);}
+  this.equals = function(p) {
+    return (this.x == p.obtenerX() && this.y == p.obtenerY());
+  }
 }
 
 /*

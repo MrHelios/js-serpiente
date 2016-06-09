@@ -23,13 +23,12 @@
   <script src="js/actualizador.js"></script>
   <script src="js/escenario.js"></script>
   <script src="js/objetos.js"></script>
-
   <script src="js/manzana.js"></script>
 
   <script type="text/javascript">
   // Lugar donde se hacen los test.
 
-    var cvs="canvas";    
+    var cvs="canvas";
     var victoria=true;
 
     var tablero = new Tablero(cvs);
@@ -48,20 +47,16 @@
     var linea = new Linea_Mov(cvs,punto,punto2);
     var serpiente = new Coleccion(10);
     serpiente.insertar(linea);
+    serpiente.extender(serpiente);
 
     var punto3 = new Punto(cvs,100,100);
-    var manzana = new Manzana(cvs,2,punto3);
+    var manzana = new Manzana(cvs,3,punto3);
     var manzanas = new Coleccion(3);
-
-    var colores = new Array(3);
-    colores[0] = "green";
-    colores[1] = "red";
-    colores[2] = "blue";
 
     for(var i=0; i<3; i++) {
       manzanas.insertar(manzana.clone());
       manzanas.obtenerPos(i).posAleatoria();
-      manzanas.obtenerPos(i).color = colores[i];
+      manzanas.obtenerPos(i).color = "green";
 
       var x = manzanas.obtenerPos(i).obtenerCentro().obtenerX();
       var y = manzanas.obtenerPos(i).obtenerCentro().obtenerY();

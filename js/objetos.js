@@ -16,6 +16,7 @@ function Objetos() {
 
   this.obtenerPared = function() { return this.pared;}
   this.obtenerManzana = function() { return this.manzana;}
+  this.obtenerSerpiente = function() { return this.serpiente;}
   this.obtenerObjManzana = function() { return this.objManzana;}
   this.clone = function() {
     // No esta termino este metodo.
