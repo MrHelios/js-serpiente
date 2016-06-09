@@ -2,7 +2,11 @@ function Objetos() {
   this.pared = false;
   this.serpiente = false;
   this.manzana = false;
+  this.objManzana = null;
 
+  this.establecerManzana = function(m) {
+    this.objManzana = m;
+  }
   this.activarPared = function() { this.pared = true;}
   this.activarSerpiente = function() { this.serpiente = true;}
   this.activarManzana = function() { this.manzana = true;}
@@ -11,6 +15,8 @@ function Objetos() {
   this.desactivarManzana = function() { this.manzana = false;}
 
   this.obtenerPared = function() { return this.pared;}
+  this.obtenerManzana = function() { return this.manzana;}
+  this.obtenerObjManzana = function() { return this.objManzana;}
   this.clone = function() {
     // No esta termino este metodo.
     o = new Objetos();

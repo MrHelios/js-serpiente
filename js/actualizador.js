@@ -1,13 +1,30 @@
 actualizacion = function() {
   tablero.limpiar();
-  for(i=0; i<serpiente.obtenerCant();i++) {
+
+  // Dibujo la serpiente.
+  for(var i=0; i<serpiente.obtenerCant();i++) {
     if(i==0) {
         if(!serpiente.obtenerPos(0).giro) serpiente.obtenerPos(i).movimiento();
-        
+
         // Verificamos la nueva posicion.
         var puntoi = serpiente.obtenerPos(0).obtenerPI();
         var pos_actual = esc.obtenerPos(puntoi.obtenerX()/5,puntoi.obtenerY()/5)
         if(pos_actual.obtenerPared()) victoria=false;
+        else if(pos_actual.obtenerManzana()) {
+          // Removemos la posicion actual de la manzana.
+          var pos = pos_actual.obtenerObjManzana();
+          pos_actual.desactivarManzana();
+          pos_actual.establecerManzana(null);
+          manzanas.obtenerPos(pos).posAleatoria();
+
+          serpiente.extender(serpiente);
+
+          // Agregamos la nueva posicion.
+          var x = manzanas.obtenerPos(pos).obtenerCentro().obtenerX();
+          var y = manzanas.obtenerPos(pos).obtenerCentro().obtenerY();
+          esc.obtenerPos(x/5,y/5).activarManzana();
+          esc.obtenerPos(x/5,y/5).establecerManzana(pos);
+        }
       }
     else {
         var puntoi = serpiente.obtenerPos(i-1).obtenerPF().clone();
@@ -20,13 +37,10 @@ actualizacion = function() {
   }
   serpiente.obtenerPos(0).giro = false;
 
-  // Esta parte actualmente esta como test.
-  // La serpiente se agrandara cuando coma una manzana.
-  if(contador==20) {
-    serpiente.extender(serpiente);
-    contador = 0;
-  }
-  else contador++;
+  // Dibujo de manzanas.
+  for(var i=0; i<manzanas.obtenerCant(); i++) {
+    manzanas.obtenerPos(i).dibujar();
+  }  
 
   // Mientras la serpiente este viva el juego seguira.
   if(victoria) setTimeout(actualizacion,50);
