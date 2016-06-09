@@ -22,12 +22,26 @@
   <script src="js/oyente.js"></script>
   <script src="js/actualizador.js"></script>
 
+  <script src="js/escenario.js"></script>
+  <script src="js/objetos.js"></script>
+
   <script type="text/javascript">
   // Lugar donde se hacen los test.
     var cvs="canvas";
     var contador=0;
+    var victoria=true;
 
     var tablero = new Tablero(cvs);
+    var esc = new Escenario(cvs);
+    var obj = new Objetos();
+
+    for(var i=0, fila=esc.fila(); i<=fila; i++) {
+      for(var j=0, columna=esc.columna(); j<=columna; j++) {
+          esc.establecerPos(i,j,obj.clone());
+          if(i==0 || i==fila || j==0 || j==columna) esc.obtenerPos(i,j).activarPared();
+      }
+    }
+
     var punto = new Punto(cvs,50,200);
     var punto2 = new Punto(cvs,50,205);
     var linea = new Linea_Mov(cvs,punto,punto2);
